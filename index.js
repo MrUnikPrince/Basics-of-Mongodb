@@ -2,14 +2,15 @@ const express = require('express');  // npm install express
 const app = express();
 const port = 8000;  // port 
 const expressLayout = require('express-ejs-layouts');  // npm install express-ejs-layouts
+const db = require('./config/mongoose')
 
 
-app.use(expressLayout);
 app.use(express.static('./assets'));
+app.use(expressLayout);
 
 // extract style and script form sub pages into the layout
-app.set('layout extractStyle', true);
-app.set('layout extractScript', true);
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 
 // use express router
 app.use('/', require('./routes'));
